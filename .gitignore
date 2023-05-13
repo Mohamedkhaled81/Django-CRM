@@ -103,8 +103,7 @@ env/
 venv/ 
 ENV/ 
 env.bak/ 
-venv.bak/
-crm-env/
+venv.bak/ 
 
 # mkdocs documentation 
 /site 
