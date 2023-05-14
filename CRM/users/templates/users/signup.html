@@ -1,0 +1,10 @@
+{% extends 'app/index.html' %}
+{% block title %} Sign Up {% endblock %}
+{% block content %} 
+    <h1 class="text-xl">Sign Up</h1>
+    <form method="POST"> 
+        {% csrf_token %}
+        {{form.as_p}}
+        <button class="py-3 px-4 rounded-xl bg-sky-700 hover:bg-sky-600 me-1 text-white">Submit</button>
+    </form>
+{% endblock %}

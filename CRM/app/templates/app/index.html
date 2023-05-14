@@ -20,16 +20,19 @@
             <a href="{% url 'about' %}" class="py-3 px-4 rounded-xl bg-stone-950 me-1 hover:bg-neutral-800">
                 About
             </a>
-            {% if not request.user.is_authanticated %}
-            <a href="/" class="py-3 px-4 rounded-xl bg-sky-700 hover:bg-sky-600 me-1">
-                Log in
+            {% if request.user.is_authenticated %}
+            <a href="{% url 'dashboard' %}" class="py-3 px-4 rounded-xl bg-sky-700 hover:bg-sky-600 me-1">
+                dashboard
             </a>
-            <a href="/" class="py-3 px-4 rounded-xl me-1 hover:bg-neutral-800">
-                Sign up
+            <a href="{% url 'log-out' %}" class="py-3 px-4 rounded-xl bg-sky-700 hover:bg-sky-600 ">
+                Log out
             </a>
             {% else %}
-            <a href="/" class="py-3 px-4 rounded-xl bg-sky-700 hover:bg-sky-600 ">
-                Log out
+            <a href="{% url 'log-in' %}" class="py-3 px-4 rounded-xl bg-sky-700 hover:bg-sky-600 me-1">
+                Log in
+            </a>
+            <a href="{% url 'sign-up' %}" class="py-3 px-4 rounded-xl me-1 hover:bg-neutral-800">
+                Sign up
             </a>
             {% endif %}
         </div>
