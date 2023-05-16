@@ -1,0 +1,39 @@
+{% extends 'app/index.html' %}
+{% block title %}
+Leads
+{% endblock %}
+{% block content %}
+<div class="py-4 px-4 ">
+    <h1 class="text-xl mb-2 t">Leads</h1>
+    <a href="{% url 'create_lead' %}"
+        class="inline-block py-3 px-5 rounded-xl bg-sky-700 hover:bg-sky-600 me-2 mt-1 text-white">
+        Add leads
+    </a>
+    <div class="flex justify-between  mt-5 ">
+        <p class="py-3 px-3 bg-gray-300 w-full">
+            Name
+        </p>
+        <p class="px-3 py-3 bg-gray-300 w-full">
+            Priority
+        </p>
+        <p class="px-3 py-3 bg-gray-300 w-full">
+            Status
+        </p>
+    </div>
+    {% if leads %}
+    {% for lead in leads %}
+    <div class="flex justify-between">
+        <a href="{% url 'detail_lead' lead.id %}"
+            class="px-2 py-2 w-full {% cycle 'bg-gray-100' ''   %}">{{lead.name}}</a>
+        <p class="px-2 py-2 w-full {% cycle 'bg-gray-100' ''  %}">{{lead.priority}}</p>
+        <p class="px-2 py-2 w-full {% cycle 'bg-gray-100' '' %}">{{lead.status}}</p>
+    </div>
+
+
+
+    {% endfor %}
+    {% endif %}
+
+</div>
+
+{% endblock %}

@@ -17,23 +17,39 @@
             CRM
         </a>
         <div>
-            <a href="{% url 'about' %}" class="py-3 px-4 rounded-xl bg-stone-950 me-1 hover:bg-neutral-800">
+            <a href="{% url 'about' %}" class="py-3 px-4 rounded-xl bg-stone-950 me-2 hover:bg-neutral-800">
                 About
             </a>
-            {% if not request.user.is_authanticated %}
-            <a href="/" class="py-3 px-4 rounded-xl bg-sky-700 hover:bg-sky-600 me-1">
-                Log in
+            {% if request.user.is_authenticated %}
+            <a href="{% url 'dashboard' %}" class="py-3 px-4 rounded-xl bg-sky-700 hover:bg-sky-600 me-2">
+                Dashboard
             </a>
-            <a href="/" class="py-3 px-4 rounded-xl me-1 hover:bg-neutral-800">
-                Sign up
+            <a href="{% url 'list_leads' %}" class="py-3 px-4 rounded-xl bg-sky-700 hover:bg-sky-600 me-2">
+                Leads
+            </a>
+            <a href="{% url 'log-out' %}" class="py-3 px-4 rounded-xl bg-red-800 hover:bg-red-700	 me-2 ">
+                Log out
             </a>
             {% else %}
-            <a href="/" class="py-3 px-4 rounded-xl bg-sky-700 hover:bg-sky-600 ">
-                Log out
+            <a href="{% url 'log-in' %}" class="py-3 px-4 rounded-xl bg-sky-700 hover:bg-sky-600 me-1">
+                Log in
+            </a>
+            <a href="{% url 'sign-up' %}" class="py-3 px-4 rounded-xl me-1 hover:bg-neutral-800">
+                Sign up
             </a>
             {% endif %}
         </div>
     </nav>
+    {% if messages %}
+    <div class="px-4 py-6">
+        {% for message in messages %}
+        <div class="px-4 py-4 text-white bg-slate-700		 rounded-xl">
+            {{message}}
+        </div>
+        {% endfor %}
+    </div>
+
+    {% endif %}
     {% block content %}
 
     {% endblock %}
