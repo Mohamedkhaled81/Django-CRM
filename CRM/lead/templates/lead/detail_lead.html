@@ -1,0 +1,41 @@
+{% extends 'app/index.html' %}
+{% block title %}
+Leads
+{% endblock %}
+{% block content %}
+<div class="py-6 px-6 ">
+    <p class="mb-4 text-xl">{{lead.name}}</p>
+    </p>
+    {% if lead.description %}
+    <p class="text-semibold">
+        Name
+    </p>
+    <p class="mb-2">{{lead.description}}</p>
+    {% endif %}
+    <p class="text-semibold">
+        Priority
+    </p>
+    <p class="mb-2">{{lead.priority}}</p>
+    <p class="text-semibold">
+        Status
+    </p>
+    <p class="mb-2">{{lead.status}}</p>
+    <p class="text-semibold">
+        created_at
+    </p>
+    <p class="mb-2">{{lead.created_at}}</p>
+    <p class="text-semibold">
+        modified_at
+    </p>
+    <p class="mb-2">{{lead.modified_at}}</p>
+
+</div>
+<div class="flex px-4 mb-3">
+    <a href="" class="py-3 px-4 text-white rounded-xl bg-red-800 hover:bg-red-700	 me-2 ">
+        Delete
+    </a>
+    <a href="" class="py-3 px-4 text-white rounded-xl bg-sky-700 hover:bg-sky-600 me-2">
+        Change
+    </a>
+</div>
+{% endblock %}

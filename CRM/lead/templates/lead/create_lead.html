@@ -1,10 +1,13 @@
 {% extends 'app/index.html' %}
 {% block title %} New Lead {% endblock %}
 {% block content %}
-<h1 class="text-xl">Create Lead</h1>
-<form method="POST">
-    {% csrf_token %}
-    {{form.as_p}}
-    <button class="py-3 px-4 rounded-xl bg-sky-700 hover:bg-sky-600 me-1 text-white">Submit</button>
-</form>
+<div class="py-4 px-4">
+    <h1 class="text-xl mb-3">Create Lead</h1>
+    <form method="POST">
+        {% csrf_token %}
+        {{form.as_p}}
+        <button class="py-3 px-4 rounded-xl bg-sky-700 hover:bg-sky-600 me-1 mt-2 text-white">Submit</button>
+    </form>
+</div>
+
 {% endblock %}

@@ -24,7 +24,10 @@
             <a href="{% url 'dashboard' %}" class="py-3 px-4 rounded-xl bg-sky-700 hover:bg-sky-600 me-2">
                 Dashboard
             </a>
-            <a href="{% url 'log-out' %}" class="py-3 px-4 rounded-xl bg-sky-700 hover:bg-sky-600 me-2 ">
+            <a href="{% url 'list_leads' %}" class="py-3 px-4 rounded-xl bg-sky-700 hover:bg-sky-600 me-2">
+                Leads
+            </a>
+            <a href="{% url 'log-out' %}" class="py-3 px-4 rounded-xl bg-red-800 hover:bg-red-700	 me-2 ">
                 Log out
             </a>
             {% else %}
@@ -37,6 +40,16 @@
             {% endif %}
         </div>
     </nav>
+    {% if messages %}
+    <div class="px-4 py-6">
+        {% for message in messages %}
+        <div class="px-4 py-4 text-white bg-slate-700		 rounded-xl">
+            {{message}}
+        </div>
+        {% endfor %}
+    </div>
+
+    {% endif %}
     {% block content %}
 
     {% endblock %}
