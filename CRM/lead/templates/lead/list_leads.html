@@ -24,7 +24,7 @@ Leads
     {% for lead in leads %}
     <div class="flex justify-between">
         <a href="{% url 'detail_lead' lead.id %}"
-            class="px-2 py-2 w-full {% cycle 'bg-gray-100' ''   %}">{{lead.name}}</a>
+            class="px-2 py-2 w-full hover:text-sky-700 {% cycle 'bg-gray-100' ''   %}">{{lead.name}}</a>
         <p class="px-2 py-2 w-full {% cycle 'bg-gray-100' ''  %}">{{lead.priority}}</p>
         <p class="px-2 py-2 w-full {% cycle 'bg-gray-100' '' %}">{{lead.status}}</p>
     </div>
