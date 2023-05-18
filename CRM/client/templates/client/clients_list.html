@@ -1,0 +1,31 @@
+{% extends 'app/index.html' %}
+{% block title %}
+Clients
+{% endblock %}
+{% block content %}
+<div class="py-4 px-4 ">
+    <h1 class="text-xl mb-2 t">Clients</h1>
+    <a href="{% url 'clients_add' %}"
+        class="inline-block py-3 px-5 rounded-xl bg-sky-700 hover:bg-sky-600 me-2 mt-1 text-white">
+       Add Clients
+    </a>
+    <div class="flex justify-between  mt-5 ">
+        <p class="py-3 px-3 bg-gray-300 w-full">
+            Name
+        </p>
+
+    </div>
+    {% if clients %}
+    {% for client in clients %}
+    <div class="flex justify-between">
+        <a href="{% url 'clients_detail' client.id%}"
+            class="px-2 py-2 w-full hover:text-sky-700 {% cycle 'bg-gray-100' ''   %}">{{client.name}}</a>
+    </div>
+    {% endfor %}
+    {% else %}
+    <p class="px-2 py-2 text-center">There are no Clients Here!</p>
+    {% endif %}
+
+</div>
+
+{% endblock %}
