@@ -3,6 +3,7 @@ from .forms import CreateLead
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 from .models import Leads
+from client.models import Client
 # Create your views here.
 
 @login_required
@@ -24,7 +25,7 @@ def create_lead(request):
 
 @login_required
 def list_leads(request):
-    leads = Leads.objects.filter(created_by = request.user)
+    leads = Leads.objects.filter(created_by = request.user, converted_to_client=False)
     if leads:
         return render(request,'lead/list_leads.html',{'leads':leads})
     return render(request,'lead/list_leads.html')
@@ -57,4 +58,13 @@ def delete_lead(request,id):
     lead = get_object_or_404(Leads,created_by = request.user,id = id)
     lead.delete()
     messages.add_message(request, messages.SUCCESS, "The Lead was deleted")
+    return redirect('list_leads')
+
+@login_required
+def convert_to_client(request,id):
+    lead = get_object_or_404(Leads, created_by=request.user, pk=id)
+    client = Client.objects.create(name=lead.name, email=lead.email, description=lead.description, created_by=request.user)
+    lead.converted_to_client = True
+    lead.save()
+    messages.add_message(request, messages.SUCCESS, "The Lead was Converted to a client")
     return redirect('list_leads')

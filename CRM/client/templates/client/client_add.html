@@ -1,0 +1,13 @@
+{% extends 'app/index.html' %}
+{% block title %} New Client {% endblock %}
+{% block content %}
+<div class="py-4 px-4">
+    <h1 class="text-xl mb-3">Create Client</h1>
+    <form method="POST">
+        {% csrf_token %}
+        {{form.as_p}}
+        <button class="py-3 px-6 rounded-xl bg-sky-700 hover:bg-sky-600 me-1 mt-3 text-white">Submit</button>
+    </form>
+</div>
+
+{% endblock %}
